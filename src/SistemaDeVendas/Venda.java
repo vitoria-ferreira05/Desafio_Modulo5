@@ -66,14 +66,13 @@ public class Venda {
 
     @Override
     public String toString() {
-        return "\nVenda{" +
-                "id='" + id + '\'' +
-                ", cliente=" + cliente +
-                ", vendedor=" + vendedor +
-                ", produtos=" + produtos +
-                ", quantidade=" + quantidade +
-                ", valorTotalCompra=" + valorTotalCompra +
-                ", dataRegistro=" + dataRegistro +
-                '}';
+        return "Venda: " +
+                "\nid: " + id +
+                "\ncliente: " + cliente +
+                "\nvendedor: " + vendedor +
+                "\nprodutos: " + produtos +
+                "\nquantidade: " + quantidade +
+                "\nvalorTotalCompra: " + valorTotalCompra +
+                "\ndataRegistro: " + dataRegistro;
     }
 }

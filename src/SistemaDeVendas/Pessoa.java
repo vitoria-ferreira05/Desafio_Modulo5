@@ -35,10 +35,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "\n{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "nome: " + nome +
+                ", cpf: " + cpf +
+                ", email: " + email;
     }
 }

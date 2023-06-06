@@ -16,7 +16,8 @@ public class Main {
 
         int opcao = 0;
         do {
-            System.out.println("\n\n\n1 - Cadastrar produto \n" +
+            System.out.println("---Sistema de vendas---\n" +
+                    "1 - Cadastrar produto \n" +
                     "2 - Ver produtos cadastrados\n" +
                     "3 - Cadastrar vendedor\n" +
                     "4 - Ver vendedores cadastrados\n" +
@@ -26,7 +27,7 @@ public class Main {
                     "8 - Ver vendas\n" +
                     "9 - Ver vendas pelo cpf do cliente\n" +
                     "10 - Ver vendas pelo email do vendedor\n" +
-                    "0 - sair do sistema");
+                    "0 - Sair do sistema");
             opcao = Integer.parseInt(sc.nextLine());
             decisao(opcao);
         } while (opcao > 0);
