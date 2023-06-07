@@ -21,7 +21,7 @@ public class Produto {
 
     @Override
     public String toString() {
-        return "Produto - " +
+        return "\nProduto - " +
                 "id: " + id +
                 ", nome: " + nome +
                 ", valor: " + valor;
