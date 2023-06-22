@@ -7,6 +7,17 @@ public class Pessoa {
     private String nome;
     private String cpf;
     private String email;
+    private String senha;
+
+    public Pessoa(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
 
     public Pessoa(String nome, String cpf, String email) {
         validaEmail(email);
@@ -15,7 +26,7 @@ public class Pessoa {
         this.email = email;
     }
 
-    void validaEmail(String email) {
+    public void validaEmail(String email) {
         if (!email.contains("@")) {
             throw new EmailSemArrobaException("Email invalido");
         }
@@ -35,8 +46,11 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "nome: " + nome +
-                ", cpf: " + cpf +
-                ", email: " + email;
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
     }
 }

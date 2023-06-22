@@ -10,7 +10,8 @@ public class Cliente extends Pessoa {
         validaClienteJaCadastrado(registro, cpf, email);
     }
 
-    void validaClienteJaCadastrado(Registro registro, String cpf, String email) {
+
+    static void validaClienteJaCadastrado(Registro registro, String cpf, String email) {
         for (Cliente cliente : registro.getClientes()) {
             if (cliente.getCpf().equals(cpf) || cliente.getEmail().equals(email)) {
                 throw new DadosJaCadastradosException("CPF ou Email ja cadastrado para esse cliente");

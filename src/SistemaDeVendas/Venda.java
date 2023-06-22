@@ -29,6 +29,13 @@ public class Venda {
         this.valorTotalCompra = getValorTotalVenda();
     }
 
+    public Venda() {
+
+    }
+
+    public Venda(Cliente cliente) {
+    }
+
     public void validaObjeto(Object obj) {
         if (obj == null) {
             throw new ObjetoNullException("Erro ao cadastrar objeto nullo.");
@@ -74,5 +81,28 @@ public class Venda {
                 "\nquantidade: " + quantidade +
                 "\nvalorTotalCompra: " + valorTotalCompra +
                 "\ndataRegistro: " + dataRegistro;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+    }
+
+    public List<Venda> getVendasPeloCpfCliente(String cpfBuscado) {
+        return null;
+    }
+
+    public List<Venda> getVendasPeloEmailVendedor(String emailBuscado) {
+        return null;
+    }
+
+    public Cliente getClientePeloCPF(String cpfBuscado) {
+        return null;
+    }
+
+    public Vendedor getVendedorPeloCPF(String cpfBuscado) {
+        return null;
+    }
+
+    public Produto getProdutoPeloId(String idBuscado) {
+        return null;
     }
 }

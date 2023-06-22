@@ -1,11 +1,15 @@
 package SistemaDeVendas;
 
+import SistemaDeVendas.LoginPessoa.LoginCliente;
+import SistemaDeVendas.LoginPessoa.LoginVendedor;
 import SistemaDeVendas.exception.ProdutoNaoEncontradoExeption;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+
+import static SistemaDeVendas.LoginPessoa.LoginCliente.realizarLoginCliente;
 
 public class Main {
 
@@ -17,16 +21,17 @@ public class Main {
         int opcao = 0;
         do {
             System.out.println("---Sistema de vendas---\n" +
-                    "1 - Cadastrar produto \n" +
-                    "2 - Ver produtos cadastrados\n" +
-                    "3 - Cadastrar vendedor\n" +
-                    "4 - Ver vendedores cadastrados\n" +
-                    "5 - Cadastrar cliente\n" +
-                    "6 - Ver clientes cadastrados\n" +
-                    "7 - Registrar venda\n" +
-                    "8 - Ver vendas\n" +
-                    "9 - Ver vendas pelo cpf do cliente\n" +
-                    "10 - Ver vendas pelo email do vendedor\n" +
+                    "1 - Login\n" +
+                    "2 - Cadastrar produto \n" +
+                    "3 - Ver produtos cadastrados\n" +
+                    "4 - Cadastrar vendedor\n" +
+                    "5 - Ver vendedores cadastrados\n" +
+                    "6 - Cadastrar cliente\n" +
+                    "7 - Ver clientes cadastrados\n" +
+                    "8 - Registrar venda\n" +
+                    "9 - Ver vendas\n" +
+                    "10 - Ver vendas pelo cpf do cliente\n" +
+                    "11 - Ver vendas pelo email do vendedor\n" +
                     "0 - Sair do sistema");
             opcao = Integer.parseInt(sc.nextLine());
             decisao(opcao);
@@ -36,13 +41,16 @@ public class Main {
     protected static void decisao(int opcao) {
         switch (opcao) {
             case 1:
+                logarPessoasNoSistema();
+                break;
+            case 2:
                 Produto produto = cadastrarProduto();
                 registro.getProdutos().add(produto);
                 break;
-            case 2:
+            case 3:
                 System.out.println(registro.getProdutos().toString());
                 break;
-            case 3:
+            case 4:
                 try {
                     Vendedor vendedor = cadastrarVendedor();
                     registro.getVendedores().add(vendedor);
@@ -50,10 +58,10 @@ public class Main {
                     System.out.println(e.getMessage());
                 }
                 break;
-            case 4:
+            case 5:
                 System.out.println(registro.getVendedores().toString());
                 break;
-            case 5:
+            case 6:
                 try {
                     Cliente cliente = cadastrarCliente();
                     registro.getClientes().add(cliente);
@@ -61,10 +69,10 @@ public class Main {
                     System.out.println(e.getMessage());
                 }
                 break;
-            case 6:
+            case 7:
                 System.out.println(registro.getClientes().toString());
                 break;
-            case 7:
+            case 8:
                 try {
                     Venda venda = cadastrarVenda();
                     registro.getVendas().add(venda);
@@ -72,15 +80,15 @@ public class Main {
                     System.out.println(e.getMessage());
                 }
                 break;
-            case 8:
+            case 9:
                 System.out.println(registro.getVendas().toString());
                 break;
-            case 9:
+            case 10:
                 List<Venda> vendasCliente = getVendaPeloCPFCliente();
                 System.out.println("As vendas do cliente sao:\n");
                 System.out.println(vendasCliente.toString());
                 break;
-            case 10:
+            case 11:
                 List<Venda> vendasVendedor = getVendaPeloEmailVendedor();
                 System.out.println("As vendas do vendedor sao:\n");
                 System.out.println(vendasVendedor.toString());
@@ -127,6 +135,7 @@ public class Main {
         List<Produto> produtos = registrarProdutosDaVenda();
 
         return new Venda(cliente, vendedor, idVenda, produtos);
+
     }
 
     protected static List<Produto> registrarProdutosDaVenda() {
@@ -163,6 +172,7 @@ public class Main {
         System.out.print("Digite o email do cliente:");
         String email = sc.nextLine();
         return new Cliente(nome, cpf, email, registro);
+
     }
 
     protected static Vendedor cadastrarVendedor() {
@@ -182,7 +192,39 @@ public class Main {
         String nomeProduto = sc.nextLine();
         System.out.print("Digite o preco do produto:");
         Double valorProduto = Double.valueOf(sc.nextLine());
-
         return new Produto(idProduto, nomeProduto, valorProduto);
+    }
+
+    protected static void logarPessoasNoSistema(){
+        while (true){
+            System.out.println("---LOGIN---\n" +
+                    "1. Login Cliente\n" +
+                    "2. Cadastrar Clinte\n" +
+                    "3. Verificar Clientes Cadastrados\n" +
+                    "4. Login Vendedor\n" +
+                    "5. Cadastrar Vendedor\n" +
+                    "6. Verificar Vendedores Cadastrados");
+            int opcao = sc.nextInt();
+            switch (opcao){
+                case 1:
+                    LoginCliente.realizarLoginCliente();
+                    break;
+                case 2:
+                    LoginCliente.resgistrarDadosLoginCliente();
+                    break;
+                case 3:
+                    LoginCliente.mostrarClientesCadastrados();
+                    break;
+                case 4:
+                    LoginVendedor.realizarLoginVendedor();
+                    break;
+                case 5:
+                   LoginVendedor.resgistrarDadosLoginVendedor();
+                    break;
+                case 6:
+                    LoginVendedor.mostrarVendedoresCadastrados();
+                    break;
+            }
+        }
     }
 }

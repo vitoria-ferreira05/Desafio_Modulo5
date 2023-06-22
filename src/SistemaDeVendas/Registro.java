@@ -75,4 +75,8 @@ public class Registro {
     public List<Produto> getProdutos() {
         return produtos;
     }
+
+    public void validaClienteJaCadastrado(String cpf, String email) {
+
+    }
 }
